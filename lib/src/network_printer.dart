@@ -8,8 +8,27 @@
 
 import 'dart:io';
 import 'dart:typed_data' show Uint8List;
-import 'package:esc_pos_utils/esc_pos_utils.dart';
+
+import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart'
+    show
+        Barcode,
+        BarcodeFont,
+        BarcodeText,
+        CapabilityProfile,
+        Generator,
+        PaperSize,
+        PosAlign,
+        PosBeepDuration,
+        PosColumn,
+        PosCutMode,
+        PosDrawer,
+        PosFontType,
+        PosImageFn,
+        PosStyles,
+        QRCorrection,
+        QRSize;
 import 'package:image/image.dart';
+
 import './enums.dart';
 
 /// Network Printer
@@ -157,7 +176,7 @@ class NetworkPrinter {
   void qrcode(
     String text, {
     PosAlign align = PosAlign.center,
-    QRSize size = QRSize.Size4,
+    QRSize size = QRSize.size4,
     QRCorrection cor = QRCorrection.L,
   }) {
     _socket.add(_generator.qrcode(text, align: align, size: size, cor: cor));
